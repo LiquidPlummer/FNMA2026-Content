@@ -5,4 +5,5 @@
 - [Java](Java/README.md)
 
 ## Misc:
+ - [Software List](Software-List.md)
  - [VSCode Extensions](VSCode-Extensions.md)
