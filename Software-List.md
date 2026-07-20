@@ -1,4 +1,4 @@
-# Software to isntall:
+# Software to install:
  - JDK v21
  - Gradle v8
  - Git
