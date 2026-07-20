@@ -1,4 +1,4 @@
-package main.Java.utils;
+package utils;
 
 public class ConnectionManager {
     

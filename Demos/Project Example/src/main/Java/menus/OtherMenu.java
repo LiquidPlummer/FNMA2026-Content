@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 import utils.ConsoleManager;
 
-public class MainMenu implements Menu{
-    public String name = "MainMenu";
-
+public class OtherMenu implements Menu {
     /**
      * The render() method is just a series of outputs and inputs. Output some prompt for the user, take in their input
      * and act on it. The render method is basically a UI script for the console. At the end of each render, the console
@@ -16,10 +14,9 @@ public class MainMenu implements Menu{
     public void render() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("==================== Welcome! ====================\n"
-            + "This is how we create menus. Just output instructions for the user\n"
-            + "and then read in their choice with scanner.\n"
-            + "1) Other Menu\n"
+        System.out.println("==================== Other Menu ====================\n"
+            + "This is the 'Other Menu'.\n"
+            + "1) Main Menu\n"
             + "2) Another Menu\n"
             + "Q) Quit\n"
             );
@@ -28,7 +25,7 @@ public class MainMenu implements Menu{
 
         switch(input) {
             case "1":
-                ConsoleManager.navigate("OtherMenu");
+                ConsoleManager.navigate("MainMenu");
                 break;
             case "2": 
                 ConsoleManager.navigate("AnotherMenu");
@@ -39,4 +36,5 @@ public class MainMenu implements Menu{
                 break;
         }
     }
+
 }
