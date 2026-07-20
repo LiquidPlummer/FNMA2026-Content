@@ -5,6 +5,7 @@
  - IDE
    - Visual Studio Code
    - IntelliJ
+ - SQLite 
  - DBeaver
  - SQLite
  - Bruno
