@@ -1,0 +1,14 @@
+# Software to isntall:
+ - JDK v21
+ - Gradle v8
+ - Git
+ - IDE
+   - Visual Studio Code
+   - IntelliJ
+ - DBeaver
+ - SQLite
+ - Bruno
+ - Docker
+ - Python
+ - Node
+ - Splunk
