@@ -1,5 +1,8 @@
 **/instructor/
 **/Instructor/
+.claude/
+.metals/
+.vscode/
 
 
 # Compiled class file
