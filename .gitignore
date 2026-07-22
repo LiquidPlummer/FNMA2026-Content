@@ -1,8 +1,12 @@
 **/instructor/
 **/Instructor/
+**/.idea/
+**/.vscode/
+**/.metals/
 .claude/
 .metals/
 .vscode/
+*.iml
 
 
 # Compiled class file

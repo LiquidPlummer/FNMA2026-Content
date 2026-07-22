@@ -1,4 +1,8 @@
-class UserService {
+package services;
+
+import daos.UserDao;
+
+public class UserService {
     UserDao userDao;
     
     public void fakeServiceMethod() {

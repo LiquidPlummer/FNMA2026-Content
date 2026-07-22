@@ -1,4 +1,8 @@
-class ReimbursementController {
+package controllers;
+
+import services.ReimbursementService;
+
+public class ReimbursementController {
     ReimbursementService reimbursementService;
 
     public void fakeMethod() {

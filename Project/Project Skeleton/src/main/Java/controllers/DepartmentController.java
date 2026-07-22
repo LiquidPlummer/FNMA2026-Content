@@ -1,4 +1,8 @@
-class DepartmentController {
+package controllers;
+
+import services.DepartmentService;
+
+public class DepartmentController {
     DepartmentService departmentService;
 
     public void fakeMethod() {

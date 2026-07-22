@@ -1,7 +1,18 @@
+package daos;
 
-class UserDao {
+import models.User;
+
+public class UserDao {
+    User fakeUserStore;
+
     public void fakeDaoMethod() {
         return;
+    }
+
+
+    public void create(User user) {
+        //we don't have the JDBC code to actually persist this data.
+        fakeUserStore = user;
     }
 }
 

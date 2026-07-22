@@ -1,4 +1,8 @@
-class UserController {
+package controllers;
+
+import services.UserService;
+
+public class UserController {
     UserService userService;
     
     public void fakeMethod() {
