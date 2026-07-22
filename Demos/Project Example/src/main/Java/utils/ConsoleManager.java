@@ -21,7 +21,7 @@ public class ConsoleManager {
     public static void init() {
         running = true;
         
-        menuMap = new HashMap<String, Menu>();
+        menuMap = new HashMap<>();
         menuMap.put("MainMenu", new MainMenu());
         menuMap.put("OtherMenu", new OtherMenu());
         menuMap.put("AnotherMenu", new AnotherMenu());
