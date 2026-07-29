@@ -3,10 +3,13 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import daos.UserDao;
 import menus.AnotherMenu;
 import menus.MainMenu;
 import menus.Menu;
-import menus.OtherMenu;
+import menus.NewUserMenu;
+import models.User;
+import services.UserService;
 
 /*
  * This console manager exists to allow STD IN/OUT interaction during development. 
@@ -17,13 +20,19 @@ public class ConsoleManager {
     public static boolean running = true;
     public static Map<String, Menu> menuMap;
     public static Menu nextMenu;
+    public static UserService userService;
 
     public static void init() {
         running = true;
+
+        //Later this might take a few more bits, but this is good for now.
+        //This is the user vertical slice, missing the PL stuff, that comes later.
+        userService = new UserService(new UserDao());
+
         
         menuMap = new HashMap<>();
         menuMap.put("MainMenu", new MainMenu());
-        menuMap.put("OtherMenu", new OtherMenu());
+        menuMap.put("NewUserMenu", new NewUserMenu());
         menuMap.put("AnotherMenu", new AnotherMenu());
 
         //Here's the main application loop. It will keep rendering the next menu until 'running' becomes false.
@@ -40,6 +49,14 @@ public class ConsoleManager {
 
     public static void quit() {
         running = false;
+    }
+
+    public static void saveNewUSer(User newUser) {
+        userService.saveUser(newUser);
+    }
+
+    public static User findUserByUsername(String username) {
+        return userService.findUserByUsername(username);
     }
 
 }

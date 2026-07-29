@@ -1,13 +1,31 @@
 package services;
 
 import daos.UserDao;
+import models.User;
 
 public class UserService {
     UserDao userDao;
-    
+
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     public void fakeServiceMethod() {
         userDao.fakeDaoMethod();
     }
+
+    public void saveUser(User newUser) {
+        //log it
+        //check if the username already exists
+        //run the username against some sort of profanity dictionary
+        this.userDao.create(newUser);
+    }
+
+    public User findUserByUsername(String username) {
+        return this.userDao.findUserByUsername(username);
+    }
+
+
 }
 /*
  * Here in services is where "everything else" happens, we call this whole "Business Logic"
