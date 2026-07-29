@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import daos.UserDao;
-import menus.AnotherMenu;
+import menus.ViewUserMenu;
 import menus.MainMenu;
 import menus.Menu;
 import menus.NewUserMenu;
@@ -33,7 +33,7 @@ public class ConsoleManager {
         menuMap = new HashMap<>();
         menuMap.put("MainMenu", new MainMenu());
         menuMap.put("NewUserMenu", new NewUserMenu());
-        menuMap.put("AnotherMenu", new AnotherMenu());
+        menuMap.put("ViewUserMenu", new ViewUserMenu());
 
         //Here's the main application loop. It will keep rendering the next menu until 'running' becomes false.
         navigate("MainMenu");

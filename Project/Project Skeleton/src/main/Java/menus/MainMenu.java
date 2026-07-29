@@ -19,8 +19,8 @@ public class MainMenu implements Menu{
         System.out.println("==================== Welcome! ====================\n"
             + "This is how we create menus. Just output instructions for the user\n"
             + "and then read in their choice with scanner.\n"
-            + "1) Other Menu\n"
-            + "2) Another Menu\n"
+            + "1) Get User by Username\n"
+            + "2) Create New User\n"
             + "Q) Quit\n"
             );
         
@@ -28,10 +28,10 @@ public class MainMenu implements Menu{
 
         switch(input) {
             case "1":
-                ConsoleManager.navigate("OtherMenu");
+                ConsoleManager.navigate("ViewUserMenu");
                 break;
             case "2": 
-                ConsoleManager.navigate("AnotherMenu");
+                ConsoleManager.navigate("NewUserMenu");
                 break;
             case "Q":
             case "q":
