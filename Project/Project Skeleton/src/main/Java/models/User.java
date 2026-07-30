@@ -6,26 +6,34 @@ public class User{
     private String password;
     private String firstName;
     private String lastName;
-    private String dept;
+    private Integer dept_id;
     private String role;
 
-    public User(Integer id, String username, String password, String firstName, String lastName, String dept, String role) {
+    public User(Integer id, String username, String password, String firstName, String lastName, Integer dept_id, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dept = dept;
+        this.dept_id = dept_id;
         this.role = role;
     }
 
-    public User(String username, String password, String firstName, String lastName, String dept, String role) {
+    public User(String username, String password, String firstName, String lastName, Integer dept_id, String role) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dept = dept;
+        this.dept_id = dept_id;
         this.role = role;
+    }
+
+    public User(String role, String lastName, String firstName, String password, String username) {
+        this.role = role;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.password = password;
+        this.username = username;
     }
 
     public User() {
@@ -71,12 +79,12 @@ public class User{
         this.lastName = lastName;
     }
 
-    public String getDept() {
-        return dept;
+    public Integer getDept_id() {
+        return dept_id;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setDept_id(Integer dept_id) {
+        this.dept_id = dept_id;
     }
 
     public String getRole() {
@@ -94,7 +102,7 @@ public class User{
                 ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dept='" + dept + '\'' +
+                ", dept='" + dept_id + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }
