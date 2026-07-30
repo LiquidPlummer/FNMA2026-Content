@@ -3,12 +3,12 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import daos.DepartmentDao;
 import daos.UserDao;
-import menus.ViewUserMenu;
-import menus.MainMenu;
-import menus.Menu;
-import menus.NewUserMenu;
+import menus.*;
+import models.Department;
 import models.User;
+import services.DepartmentService;
 import services.UserService;
 
 /*
@@ -21,6 +21,7 @@ public class ConsoleManager {
     public static Map<String, Menu> menuMap;
     public static Menu nextMenu;
     public static UserService userService;
+    public static DepartmentService deptService;
 
     public static void init() {
         running = true;
@@ -28,12 +29,14 @@ public class ConsoleManager {
         //Later this might take a few more bits, but this is good for now.
         //This is the user vertical slice, missing the PL stuff, that comes later.
         userService = new UserService(new UserDao());
+        deptService = new DepartmentService(new DepartmentDao());
 
         
         menuMap = new HashMap<>();
         menuMap.put("MainMenu", new MainMenu());
         menuMap.put("NewUserMenu", new NewUserMenu());
         menuMap.put("ViewUserMenu", new ViewUserMenu());
+        menuMap.put("NewDeptMenu", new NewDeptMenu());
 
         //Here's the main application loop. It will keep rendering the next menu until 'running' becomes false.
         navigate("MainMenu");
@@ -57,6 +60,10 @@ public class ConsoleManager {
 
     public static User findUserByUsername(String username) {
         return userService.findUserByUsername(username);
+    }
+
+    public static void saveNewDepartment(Department dept) {
+        System.out.println(deptService.createDept(dept));
     }
 
 }

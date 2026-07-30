@@ -20,7 +20,7 @@ CREATE TABLE addresses (
 	zip INT
 )
 
-CREATE TABLE users_addresses (
+CREATE TABLE users_addresses_2 (
 	user_id INTEGER REFERENCES users(user_id),
 	address_id INTEGER REFERENCES addresses(address_id),
 	CONSTRAINT pk_users_addresses PRIMARY KEY (user_id, address_id)

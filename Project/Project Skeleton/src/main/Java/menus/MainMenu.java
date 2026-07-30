@@ -21,6 +21,7 @@ public class MainMenu implements Menu{
             + "and then read in their choice with scanner.\n"
             + "1) Get User by Username\n"
             + "2) Create New User\n"
+            + "3) Create New Department\n"
             + "Q) Quit\n"
             );
         
@@ -32,6 +33,9 @@ public class MainMenu implements Menu{
                 break;
             case "2": 
                 ConsoleManager.navigate("NewUserMenu");
+                break;
+            case "3":
+                ConsoleManager.navigate("NewDeptMenu");
                 break;
             case "Q":
             case "q":

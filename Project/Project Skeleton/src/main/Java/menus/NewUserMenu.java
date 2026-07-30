@@ -19,6 +19,7 @@ public class NewUserMenu implements Menu {
 
         System.out.print("Enter a username: ");
         String username = scanner.nextLine();
+        //ztaha\n
 
         System.out.print("Enter a password: ");
         String password = scanner.nextLine();
@@ -29,18 +30,19 @@ public class NewUserMenu implements Menu {
         System.out.print("Enter a last name: ");
         String lastName = scanner.nextLine();
 
-        System.out.print("Enter a department: ");
-        String department = scanner.nextLine();
+        System.out.print("Enter a department id: ");
+        Integer dept_id = scanner.nextInt();
+        scanner.nextLine();
+        //2\n
 
         System.out.print("Enter a role: ");
         String role = scanner.nextLine();
-
 
         /*
         When we get rid of this console junk we will still be able to call this function in the same way.
         This is where we go from the temp UI to the real workflow.
          */
-        User newUser = new User(username, password, firstName, lastName, department, role);
+        User newUser = new User(username, password, firstName, lastName, dept_id, role);
         ConsoleManager.saveNewUSer(newUser);
 
         System.out.println("New user created successfully! (I hope...)");

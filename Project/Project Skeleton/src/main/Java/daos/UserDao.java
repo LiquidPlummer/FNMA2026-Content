@@ -4,6 +4,7 @@ import models.User;
 import utils.ConnectionManager;
 
 import java.sql.*;
+import java.util.List;
 
 public class UserDao {
     User fakeUserStore;
@@ -25,14 +26,14 @@ public class UserDao {
         //PATTERN A
         Connection conn = ConnectionManager.getConnection();
 
-        String sql = "INSERT INTO users (username, password, first_name, last_name, dept, \"role\") VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, password, first_name, last_name, dept_id, \"role\") VALUES (?, ?, ?, ?, ?, ?)";
 
         PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);//this flag gets us the keys later
         pstmt.setString(1, user.getUsername());
         pstmt.setString(2, user.getPassword());
         pstmt.setString(3, user.getFirstName());
         pstmt.setString(4, user.getLastName());
-        pstmt.setString(5, user.getDept());
+        pstmt.setInt(5, user.getDept_id());
         pstmt.setString(6, user.getRole());
 
         pstmt.executeUpdate();
@@ -78,13 +79,19 @@ public class UserDao {
             resultUser.setPassword(rs.getString("password"));
             resultUser.setFirstName(rs.getString("first_name"));
             resultUser.setLastName(rs.getString("last_name"));
-            resultUser.setDept(rs.getString("dept"));
+            resultUser.setDept_id(rs.getInt("dept_id"));
             resultUser.setRole(rs.getString("role"));
         }
 
         //END OF PATTERN B
 
         return resultUser;
+    }
+
+    public List<User> getUsersByDepartment(String dept) {
+        //PATTERN A+B
+        Connection conn = ConnectionManager.getConnection();
+        String
     }
 }
 
