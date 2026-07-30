@@ -37,6 +37,9 @@ public class MainMenu implements Menu{
             case "3":
                 ConsoleManager.navigate("NewDeptMenu");
                 break;
+            case "4":
+                ConsoleManager.navigate("ViewUsersForDeptMenu");
+                break;
             case "Q":
             case "q":
                 ConsoleManager.quit();

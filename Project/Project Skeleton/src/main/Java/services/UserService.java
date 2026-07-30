@@ -4,6 +4,7 @@ import daos.UserDao;
 import models.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
     UserDao userDao;
@@ -34,6 +35,14 @@ public class UserService {
         return null;
     }
 
+
+    public List<User> findUsersByDepartment(String department) {
+        try {
+            return this.userDao.getUsersByDepartment(department);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
 /*

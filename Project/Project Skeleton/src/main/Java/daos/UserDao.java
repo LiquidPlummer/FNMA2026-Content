@@ -4,6 +4,7 @@ import models.User;
 import utils.ConnectionManager;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao {
@@ -88,10 +89,19 @@ public class UserDao {
         return resultUser;
     }
 
-    public List<User> getUsersByDepartment(String dept) {
+    public List<User> getUsersByDepartment(String dept) throws SQLException {
         //PATTERN A+B
         Connection conn = ConnectionManager.getConnection();
-        String
+        String sql = "SELECT id, username, first_name, last_name, U.dept_id, ROLE, name AS dept_name FROM users U JOIN departments D ON D.dept_id = U.dept_id WHERE D.name = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, dept);
+        ResultSet rs = pstmt.executeQuery();
+
+        List<User> userList = new ArrayList<>();
+        while(rs.next()) {
+            userList.add(new User(rs.getInt("id"),rs.getString("username"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("role")));
+        }
+        return userList;
     }
 }
 

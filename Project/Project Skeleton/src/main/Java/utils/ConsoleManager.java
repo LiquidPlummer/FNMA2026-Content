@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import daos.DepartmentDao;
@@ -37,6 +38,7 @@ public class ConsoleManager {
         menuMap.put("NewUserMenu", new NewUserMenu());
         menuMap.put("ViewUserMenu", new ViewUserMenu());
         menuMap.put("NewDeptMenu", new NewDeptMenu());
+        menuMap.put("ViewUsersForDeptMenu", new ViewUsersForDeptMenu());
 
         //Here's the main application loop. It will keep rendering the next menu until 'running' becomes false.
         navigate("MainMenu");
@@ -64,6 +66,10 @@ public class ConsoleManager {
 
     public static void saveNewDepartment(Department dept) {
         System.out.println(deptService.createDept(dept));
+    }
+
+    public static void findUsersByDepartment(String department) {
+        System.out.println(userService.findUsersByDepartment(department));
     }
 
 }

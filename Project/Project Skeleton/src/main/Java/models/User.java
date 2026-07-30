@@ -28,6 +28,14 @@ public class User{
         this.role = role;
     }
 
+    public User(Integer id, String username, String firstName, String lastName, String role) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.role = role;
+    }
+
     public User(String role, String lastName, String firstName, String password, String username) {
         this.role = role;
         this.lastName = lastName;
