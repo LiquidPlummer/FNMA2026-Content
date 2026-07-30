@@ -36,6 +36,10 @@ public class NewUserMenu implements Menu {
         String role = scanner.nextLine();
 
 
+        /*
+        When we get rid of this console junk we will still be able to call this function in the same way.
+        This is where we go from the temp UI to the real workflow.
+         */
         User newUser = new User(username, password, firstName, lastName, department, role);
         ConsoleManager.saveNewUSer(newUser);
 

@@ -15,9 +15,7 @@ public class UserService {
     }
 
     public void saveUser(User newUser) {
-        //log it
-        //check if the username already exists
-        //run the username against some sort of profanity dictionary
+
         this.userDao.create(newUser);
     }
 

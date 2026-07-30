@@ -8,10 +8,17 @@ plugins {
     id 'java'
 }
 
+//repositories {
+//    mavenLocal()
+//    maven {
+//        url = "DEPENDENCY REPOSITORY URL HERE"
+//    }
+//}
+
 repositories {
-    mavenLocal()
+    mavenCentral()
     maven {
-        url = "DEPENDENCY REPOSITORY URL HERE"
+        url "https://repo1.maven.org/maven2/"
     }
 }
  
@@ -19,10 +26,13 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation("org.xerial:sqlite-jdbc:3.49.1.0")
+
+    // And the Javalin dependency, so we can handle HTTP requests
+    implementation("io.javalin:javalin:7.2.0")
 }
 
 test {
     useJUnitPlatform()
 }
 
- 

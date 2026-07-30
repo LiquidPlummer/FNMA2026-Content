@@ -1,6 +1,11 @@
 package daos;
 
 import models.User;
+import utils.ConnectionManager;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class UserDao {
     User fakeUserStore;
@@ -13,9 +18,18 @@ public class UserDao {
     /*
     This fake functionality is just here until we replace it with real database JDBC
      */
-    public void create(User user) {
-        //we don't have the JDBC code to actually persist this data.
-        fakeUserStore = user;
+    public void create(User user) throws SQLException {
+        /*
+        We need to disassemble the user object into it's various variables, and
+        build a SQL script that will INSERT those valuse.
+        We do this with Statements, PreparedStatements, and by parameterizing.
+         */
+        Connection conn = ConnectionManager.getConnection();
+
+        String sql = "INSERT INTO users (username, password, first_name, last_name, dept, \"role\") VALUES (?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
     }
 
     public User findUserByUsername(String username) {
