@@ -52,7 +52,7 @@ public class ConsoleManager {
     }
 
     public static void saveNewUSer(User newUser) {
-        userService.saveUser(newUser);
+        System.out.println("User created: " + userService.saveUser(newUser));
     }
 
     public static User findUserByUsername(String username) {

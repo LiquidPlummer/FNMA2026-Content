@@ -6,7 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
     public static Connection getConnection(String url) {
-        try( Connection conn = DriverManager.getConnection(url)) {
+        try {
+            Connection conn = DriverManager.getConnection(url);
             return conn;
         } catch (SQLException e) {
             //This isn't really a good way to handle exceptions, but for now...

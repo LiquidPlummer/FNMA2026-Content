@@ -3,6 +3,8 @@ package services;
 import daos.UserDao;
 import models.User;
 
+import java.sql.SQLException;
+
 public class UserService {
     UserDao userDao;
 
@@ -14,13 +16,22 @@ public class UserService {
         userDao.fakeDaoMethod();
     }
 
-    public void saveUser(User newUser) {
-
-        this.userDao.create(newUser);
+    public User saveUser(User newUser) {
+        try {
+            return this.userDao.create(newUser);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public User findUserByUsername(String username) {
-        return this.userDao.findUserByUsername(username);
+        try {
+            return this.userDao.findUserByUsername(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
