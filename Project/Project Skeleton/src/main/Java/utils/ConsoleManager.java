@@ -69,7 +69,10 @@ public class ConsoleManager {
     }
 
     public static void findUsersByDepartment(String department) {
-        System.out.println(userService.findUsersByDepartment(department));
+        List<User> userList = userService.findUsersByDepartment(department);
+        for(User user : userList) {
+            System.out.println(user);
+        }
     }
 
 }

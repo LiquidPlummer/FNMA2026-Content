@@ -22,6 +22,7 @@ public class MainMenu implements Menu{
             + "1) Get User by Username\n"
             + "2) Create New User\n"
             + "3) Create New Department\n"
+            + "4) View Users by Department\n"
             + "Q) Quit\n"
             );
         
