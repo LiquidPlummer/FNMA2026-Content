@@ -3,6 +3,10 @@
 **/.idea/
 **/.vscode/
 **/.metals/
+**/out/
+**/node_modules/
+**/dist/
+**/build/
 .claude/
 .metals/
 .vscode/

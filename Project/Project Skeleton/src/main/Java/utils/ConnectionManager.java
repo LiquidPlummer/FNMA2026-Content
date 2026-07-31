@@ -17,7 +17,7 @@ public class ConnectionManager {
     }
 
     public static Connection getConnection() {
-        return getConnection("jdbc:sqlite:C:/sqlite/databases/fnma26");
+        return getConnection("jdbc:sqlite:C:/Training/Cohorts/FNMA-2026/repos/FNMA2026-Content/Project/Project Skeleton/project-iter1-db");
     }
     
 }
