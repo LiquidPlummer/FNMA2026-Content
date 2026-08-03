@@ -11,6 +11,7 @@
 .metals/
 .vscode/
 *.iml
+**/*Answer Key*
 
 
 # Compiled class file
