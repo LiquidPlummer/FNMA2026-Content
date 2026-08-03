@@ -27,3 +27,7 @@ INSERT INTO departments (name) VALUES ("test");
 
 INSERT INTO users (username, password, first_name, last_name, dept_id, role)
 VALUES ('kplummer', 'pass123', 'Kyle', 'Plummer', 1, 'admin');
+
+
+
+SELECT id, username, password, first_name, last_name, U.dept_id, ROLE, name AS dept_name FROM users U JOIN departments D ON D.dept_id = U.dept_id WHERE D.name = ?;
