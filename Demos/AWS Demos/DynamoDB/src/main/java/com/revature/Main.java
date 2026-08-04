@@ -6,12 +6,19 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+import software.amazon.awssdk.enhanced.dynamodb.Expression;
 import software.amazon.awssdk.enhanced.dynamodb.model.QueryConditional;
+import software.amazon.awssdk.enhanced.dynamodb.model.ScanEnhancedRequest;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
-
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
+import java.security.SecureRandom;
 import java.util.UUID;
 
 public class Main {
+
+    private static final String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final SecureRandom RANDOM = new SecureRandom();
+
     public static void main(String[] args) {
         DynamoDbClient ddb = DynamoDbClient.builder().build();
         DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.builder()
@@ -23,53 +30,65 @@ public class Main {
         DynamoDbTable<Department> deptTable =
                 enhancedClient.table("departments", TableSchema.fromBean(Department.class));
 
-        String deptId = "ab1be53a-c994-472f-9c5e-f83050db846b";
+        String deptId = "12345";
         String newUserId = UUID.randomUUID().toString();
+        String newUsername = randomUsername();
 
+        // Create
         Department department = new Department(deptId, "IT");
         deptTable.putItem(department);
 
-        User user = new User(newUserId, "kplummer", "Pass123", "Kyle", "Plummer", deptId, "Admin");
+        User user = new User(newUserId, newUsername, "Pass123", "Kyle", "Plummer", deptId, "Admin");
         usersTable.putItem(user);
 
+        // Read one user — key is now (dept_id, username)
+        User fetched = usersTable.getItem(Key.builder()
+                .partitionValue(deptId)
+                .sortValue(newUsername)
+                .build());
+        System.out.println("---- New User ----\n" + fetched);
 
-
-//        Order fetched = orderTable.getItem(Key.builder()
-//                .partitionValue("cust-1001")
-//                .sortValue("order-5001")
-//                .build());
-//
-//        QueryConditional queryConditional =
-//                QueryConditional.keyEqualTo(Key.builder().partitionValue("cust-1001").build());
-//
-//        orderTable.query(queryConditional)
-//                .items()
-//                .forEach(o -> System.out.println(o.getOrderId() + ": " + o.getStatus()));
-//
-//        fetched.setStatus("SHIPPED");
-//        orderTable.updateItem(fetched);
-
-//        orderTable.deleteItem(Key.builder()
-//                .partitionValue("cust-1001")
-//                .sortValue("order-5001")
-//                .build());
-
+        // Query — all users in a department, the access pattern this key design was built for
         QueryConditional queryConditional =
-                QueryConditional.keyEqualTo(Key.builder().partitionValue("1").build());
-
+                QueryConditional.keyEqualTo(Key.builder().partitionValue(deptId).build());
 
         System.out.println("===================================================");
-        System.out.println("Queried user: ");
+        System.out.println("Users in department " + deptId + ":");
         usersTable.query(queryConditional)
                 .items()
-                .forEach(o -> System.out.println(o));
-        System.out.println("\n");
-        usersTable.scan()
+                .forEach(u -> System.out.println( u.getRole() + ": " + u));
+
+        // Update
+        fetched.setRole("Manager");
+        usersTable.updateItem(fetched);
+
+        // Scan — all Admins, across every department
+        Expression filterExpression = Expression.builder()
+                .expression("#role = :role")
+                .putExpressionName("#role", "role")
+                .putExpressionValue(":role", AttributeValue.builder().s("Admin").build())
+                .build();
+
+        System.out.println("===================================================");
+        System.out.println("All Admins (scan):");
+        usersTable.scan(ScanEnhancedRequest.builder().filterExpression(filterExpression).build())
                 .items()
-                .forEach(o -> System.out.println(o));
+                .forEach(System.out::println);
+
+        // Delete
+        usersTable.deleteItem(Key.builder()
+                .partitionValue(deptId)
+                .sortValue("kplummer")
+                .build());
 
         System.out.println("===================================================");
     }
 
-
+    public static String randomUsername() {
+        StringBuilder sb = new StringBuilder(6);
+        for (int i = 0; i < 6; i++) {
+            sb.append(CHARS.charAt(RANDOM.nextInt(CHARS.length())));
+        }
+        return sb.toString();
+    }
 }
