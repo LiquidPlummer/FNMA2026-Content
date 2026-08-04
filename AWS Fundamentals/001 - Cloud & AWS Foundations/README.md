@@ -10,3 +10,4 @@
 ## Module Review
 
 - [Reading Questions](Module%20Review%20-%20Reading%20Questions.md)
+- [Answer Key](Module%20Review%20-%20Answer%20Key.md)
