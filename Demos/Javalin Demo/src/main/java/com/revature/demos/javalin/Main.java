@@ -1,15 +1,20 @@
 package com.revature.demos.javalin;
 
+import com.revature.demos.javalin.controllers.HealthController;
 import com.revature.demos.javalin.controllers.UserController;
+import com.revature.demos.javalin.services.MockUserService;
 import io.javalin.Javalin;
+import io.javalin.config.JavalinConfig;
 
 public class Main {
     public static void main(String[] args) {
-        //inversion - inverse, reverse, opposite... we change in some way to be doing the opposite, or the compliment,
-        // or the flip side of the coin
-        //flow control - what steps happen when (execution order) loops, branches, and jumps
-        //IoC - Inversion of Control - What might this mean?
+
         /*
+        inversion - inverse, reverse, opposite... we change in some way to be doing the opposite, or the compliment,
+         or the flip side of the coin
+        flow control - what steps happen when (execution order) loops, branches, and jumps
+        IoC - Inversion of Control - What might this mean?
+
         traditionally we might look at programming like this:
         We are the programmers and we use tools (libraries) as we need to accomplish our goals
 
@@ -26,12 +31,33 @@ public class Main {
         When we find something in the network buffer, we take action. (Well, not us... Javalin takes action)
 
          */
-        //we're still in main()
-        Javalin app = Javalin.create(
-                config -> {config.routes.get("/", UserController::ping);}//GET HTTP METHOD
-        ).start(7000);//ports we can pick from go from basically 1000 - 65000
+        System.out.println("This output comes from main right before starting the server.");
+        Javalin app = Javalin.create(Main::configJavalinServer).start(7000);
+        System.out.println("This output comes after the server starts. After this output, there are no instructions left in the main method...");
+        System.out.println("While the server is running we will see this output. We can add in other functionality to occur after the server starts.");
+        System.out.println("We don't have to wait for the javalin loop to quit before these instructions are executed.");
 
+    }
 
+    private static void configJavalinServer(JavalinConfig config) {
+        //Set up some dependencies
+        UserController userController = new UserController(new MockUserService());
 
+        //Register Health Controller endpoints
+        config.routes.get("/", HealthController::ping);//This one is static
+
+        //Register User Controller endpoints
+        config.routes.get("/users/{username}", userController::getUserByUsername);//Notice this one is not static
+        config.routes.get("/users", userController::getUsersWithFilters);
+        config.routes.post("/users", userController::postNewUser);
+        config.routes.put("/users", userController::putUser);
+        config.routes.delete("/users",userController::deleteUser);
+
+        //register exception handlers
+        config.routes.exception(RuntimeException.class, (e, ctx) -> {
+            System.out.println("An exception occurred in a controller: " + e.getMessage());
+            ctx.status(500);
+            ctx.result(e.getMessage());
+        });
     }
 }
