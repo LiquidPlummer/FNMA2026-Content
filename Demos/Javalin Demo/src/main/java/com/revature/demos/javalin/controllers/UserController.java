@@ -3,6 +3,7 @@ package com.revature.demos.javalin.controllers;
 import com.revature.demos.javalin.models.User;
 import com.revature.demos.javalin.services.MockUserService;
 import io.javalin.http.Context;
+import io.javalin.http.HttpStatus;
 
 
 public class UserController {
@@ -21,13 +22,13 @@ public class UserController {
     //PUT - update
     //DELETE - delete
 
-    public void postNewUser(Context ctx) {
 
-    }
 
-    public void getUserByUsername(Context ctx) {
+
+    //This is a "Request Handler" - This gets registered and called when the request comes in, and this prepares the response.
+    public void getUserByUsername(Context ctx) {// we will have a uri like this {pathParam} other tokens after the param
         //get the username from the request - get from: path params, query params, headers
-        String username = ctx.pathParam("username");
+        String username = ctx.pathParam("username");//users/kplummer
         //fetch the user from the service layer
         User user = userService.findUserByUsername(username);
         //put the user in the response body to be dispatched for us by javalin
@@ -40,6 +41,13 @@ public class UserController {
 
     public void getUsersWithFilters(Context ctx) {
         throw new RuntimeException("This method is not implemented yet.");
+    }
+
+    public void postNewUser(Context ctx) {
+        User user = ctx.bodyAsClass(User.class);
+        userService.createNewUser(user);
+        ctx.status(HttpStatus.CREATED);//same as int 200
+        ctx.json(user);
     }
 
     public void putUser(Context ctx) {

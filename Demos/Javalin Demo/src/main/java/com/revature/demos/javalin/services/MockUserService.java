@@ -3,20 +3,32 @@ package com.revature.demos.javalin.services;
 import com.revature.demos.javalin.models.User;
 import io.javalin.http.Context;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MockUserService {
+
+    Map<String, User> userMap = new HashMap<>();
+
+
+
     public User findUserByUsername(String username) {
-        return new User(username, "pass123", "Kyle", "Plummer");
+        return userMap.get(username);
     }
 
-    public void getUserWithFilters(Context ctx) {
+    public void createNewUser(User user) {
+        userMap.put(user.getUsername(), user);
+    }
+
+    public void getUserWithFilters() {
 
     }
 
-    public void putUser(Context ctx) {
+    public void putUser() {
 
     }
 
-    public void deleteUser(Context ctx) {
+    public void deleteUser() {
 
     }
 }

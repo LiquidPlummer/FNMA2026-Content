@@ -18,18 +18,19 @@ repositories {
 }
 
 dependencies {
-    // implementation platform('software.amazon.awssdk:bom:2.46.6')
-    // implementation 'software.amazon.awssdk:dynamodb-enhanced'
-    // implementation 'software.amazon.awssdk:signin'
-
+    //Junit
     testImplementation platform('org.junit:junit-bom:5.11.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
-
+    //SQLite driver
     implementation("org.xerial:sqlite-jdbc:3.49.1.0")
-    //
+
+    //Javalin, slf4j, and jackson
     implementation("io.javalin:javalin:7.2.0")
     implementation("org.slf4j:slf4j-simple:2.0.13")
+    //implementation("com.fasterxml.jackson.core:jackson-databind:2.21.2") //Version 2 of the jackson object mapper
+    implementation("tools.jackson.core:jackson-databind:3.2.1")//version 3 of jackson, requires additional config step
+
 }
 
 application {
