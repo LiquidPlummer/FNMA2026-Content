@@ -20,35 +20,47 @@ public class Main {
     private static final SecureRandom RANDOM = new SecureRandom();
 
     public static void main(String[] args) {
+        /*
+         Configure the connection to Dynamo
+         */
         DynamoDbClient ddb = DynamoDbClient.builder().build();
         DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.builder()
                 .dynamoDbClient(ddb)
                 .build();
 
+        /*
+        Initialize table objects for us to query
+         */
         DynamoDbTable<User> usersTable =
                 enhancedClient.table("users", TableSchema.fromBean(User.class));
         DynamoDbTable<Department> deptTable =
                 enhancedClient.table("departments", TableSchema.fromBean(Department.class));
 
+        //Set up some dummy data
         String deptId = "12345";
         String newUserId = UUID.randomUUID().toString();
         String newUsername = randomUsername();
 
-        // Create
+        // Create and save a department
         Department department = new Department(deptId, "IT");
         deptTable.putItem(department);
 
+        //Create and save a user
         User user = new User(newUserId, newUsername, "Pass123", "Kyle", "Plummer", deptId, "Admin");
         usersTable.putItem(user);
 
-        // Read one user — key is now (dept_id, username)
+        /*
+         Read one user — key is (dept_id, username)
+         */
         User fetched = usersTable.getItem(Key.builder()
                 .partitionValue(deptId)
                 .sortValue(newUsername)
                 .build());
         System.out.println("---- New User ----\n" + fetched);
 
-        // Query — all users in a department, the access pattern this key design was built for
+        /*
+        Get all users in Dept
+         */
         QueryConditional queryConditional =
                 QueryConditional.keyEqualTo(Key.builder().partitionValue(deptId).build());
 
@@ -58,7 +70,9 @@ public class Main {
                 .items()
                 .forEach(u -> System.out.println( u.getRole() + ": " + u));
 
-        // Update
+        /*
+        Update a user
+         */
         fetched.setRole("Manager");
         usersTable.updateItem(fetched);
 

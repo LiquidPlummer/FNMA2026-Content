@@ -20,6 +20,11 @@ public class Main {
             insertSampleData(conn);
             runAggregateQuery(conn);
             runSortKeyDemo(conn);
+
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery("SELECT current_user;");
+//            rs.next();
+//            System.out.println(rs.getString(1));
         }
     }
 
