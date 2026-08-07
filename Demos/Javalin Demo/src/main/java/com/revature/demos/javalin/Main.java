@@ -1,5 +1,6 @@
 package com.revature.demos.javalin;
 
+import com.revature.demos.javalin.controllers.DemoController;
 import com.revature.demos.javalin.controllers.HealthController;
 import com.revature.demos.javalin.controllers.UserController;
 import com.revature.demos.javalin.services.MockUserService;
@@ -9,6 +10,7 @@ import io.javalin.json.JavalinJackson3;
 
 public class Main {
     public static void main(String[] args) {
+
 
         /*
         inversion - inverse, reverse, opposite... we change in some way to be doing the opposite, or the compliment,
@@ -32,8 +34,10 @@ public class Main {
         When we find something in the network buffer, we take action. (Well, not us... Javalin takes action)
 
          */
+
+
         System.out.println("This output comes from main right before starting the server.");
-        Javalin app = Javalin.create(Main::configJavalinServer).start(7000);
+        Javalin api = Javalin.create(Main::configJavalinServer).start(7000);
         System.out.println("This output comes after the server starts. After this output, there are no instructions left in the main method...");
         System.out.println("While the server is running we will see this output. We can add in other functionality to occur after the server starts.");
         System.out.println("We don't have to wait for the javalin loop to quit before these instructions are executed.");
@@ -43,6 +47,7 @@ public class Main {
     private static void configJavalinServer(JavalinConfig config) {
         //Set up some dependencies
         UserController userController = new UserController(new MockUserService());//dependency injection pattern
+        DemoController demoController = new DemoController();
 
         //Tell Javalin to use the newer jackson tools:
         config.jsonMapper(new JavalinJackson3());
@@ -63,7 +68,12 @@ public class Main {
         config.routes.get("/users", userController::getUsersWithFilters);
         config.routes.post("/users", userController::postNewUser);
         config.routes.put("/users", userController::putUser);
-        config.routes.delete("/users",userController::deleteUser);
+        config.routes.delete("/users", userController::deleteUser);
+
+        config.routes.get("/demo/headers", demoController::demoHeaders);
+        config.routes.get("/demo/body", demoController::demoBody);
+
+
 
         //register exception handlers
         config.routes.exception(RuntimeException.class, (e, ctx) -> {

@@ -1,0 +1,24 @@
+meta {
+  name: Demo Body
+  type: http
+  seq: 9
+}
+
+get {
+  url: http://localhost:7000/demo/headers
+  body: none
+  auth: inherit
+}
+
+headers {
+  sentence: hello world
+  quote: "hello world again!"
+  number: 1
+  float: 4.444
+  sentence: this is the other sentence
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
