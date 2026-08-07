@@ -37,7 +37,11 @@ public class Main {
 
 
         System.out.println("This output comes from main right before starting the server.");
+
+
         Javalin api = Javalin.create(Main::configJavalinServer).start(7000);
+
+
         System.out.println("This output comes after the server starts. After this output, there are no instructions left in the main method...");
         System.out.println("While the server is running we will see this output. We can add in other functionality to occur after the server starts.");
         System.out.println("We don't have to wait for the javalin loop to quit before these instructions are executed.");

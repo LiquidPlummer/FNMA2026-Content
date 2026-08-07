@@ -31,10 +31,16 @@ dependencies {
     //implementation("com.fasterxml.jackson.core:jackson-databind:2.21.2") //Version 2 of the jackson object mapper
     implementation("tools.jackson.core:jackson-databind:3.2.1")//version 3 of jackson, requires additional config step
 
+    //JWTs
+    implementation("io.jsonwebtoken:jjwt-api:0.13.0")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")//This will bring in jackson 2, it won't conflict but we will have two jackson libs
+
+    implementation("org.mindrot:jbcrypt:0.4")
 }
 
 application {
-    mainClass = 'com.training.dynamodb.App'
+    mainClass = 'com.revature.demo.Main'
 }
 
 // Stretch goal (Section 7): produces build/libs/app.jar as a single
