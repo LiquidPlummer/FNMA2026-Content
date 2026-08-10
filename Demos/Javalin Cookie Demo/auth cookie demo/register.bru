@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:7000/register
+  url: http://localhost:7000/users/register
   body: json
   auth: inherit
+}
+
+headers {
+  role: admin
 }
 
 body:json {

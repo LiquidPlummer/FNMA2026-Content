@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        console.log("Hello")//Same as a sout - System.out.prinln() writes to the "standard output"
+
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center;">New User Registration!</h1>
+    <label>First Name:</label>
+    <input type="text" id="firstName"><br>
+
+    <label>Last Name:</label>
+    <input type="text" id="lastName"><br>
+
+    <label>Username:</label>
+    <input type="text" id="username" value="test"><br>
+
+    <label>Password:</label>
+    <input type="password" id="password"><br>
+
+    <label>Role:</label><br>
+    <label>Manager:</label>
+    <input type="radio" name="role" id="roleManager" value="ADMIN"><br>
+    <label>User:</label>
+    <input type="radio" name="role" id="roleUser" value="USER">
+    <br>
+    <br>
+    <input type="button" value="Submit New User" id="submitButton" onclick="buttonPress()">
+
+</body>
+<footer>
+    <script>
+        console.log("This script is invoked AFTER the rest of the document is read.")
+
+        function buttonPress() {
+            console.log("Submit button pressed...")
+
+            const firstName = document.querySelector("#firstName").value
+            const lastName = document.querySelector("#lastName").value
+            const username = document.querySelector("#username").value
+            const password = document.querySelector("#password").value
+            const role = document.querySelector("input[name=role]:checked").value
+
+            const user = {
+                firstName: firstName,
+                lastName: lastName,
+                username: username,
+                password: password,
+                role: role
+            }
+
+            //maybe as part of button press we go pull the data from the input elements
+
+            axios.post("http://localhost:7000/users/register", user)
+                .then(thenDo)
+                .catch(thenCatch)
+        }
+
+        function thenDo() {
+            console.log("Response Received!")
+            window.location.href = "userProfile.html"
+        }
+
+        function thenCatch() {
+            console.log("There was an error...")
+            window.location.href = "userProfile.html"
+        }
+    </script>
+</footer>
+</html>
