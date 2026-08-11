@@ -7,7 +7,7 @@
 plugins {
     id 'java'
 }
-
+//This is for inside FNMA environment
 //repositories {
 //    mavenLocal()
 //    maven {
@@ -15,6 +15,7 @@ plugins {
 //    }
 //}
 
+//This is what the rest of us use out here in the wild, this is the public repository
 repositories {
     mavenCentral()
     maven {
@@ -32,6 +33,16 @@ dependencies {
     // And the Javalin dependency, so we can handle HTTP requests
     implementation("io.javalin:javalin:7.2.0")
     implementation("org.slf4j:slf4j-simple:2.0.13")
+    implementation("tools.jackson.core:jackson-databind:3.2.1")//version 3 of jackson, requires additional config step
+
+    //JWTs
+    implementation("io.jsonwebtoken:jjwt-api:0.13.0")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")//This will bring in jackson 2, it won't conflict but we will have two jackson libs
+
+    //Jbcrypt for salting and hashing passwords
+    implementation("org.mindrot:jbcrypt:0.4")
+
 }
 
 test {

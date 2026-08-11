@@ -4,9 +4,9 @@ import services.UserService;
 
 public class UserController {
     UserService userService;
-    
-    public void fakeMethod() {
-        userService.fakeServiceMethod();
+
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 }
 

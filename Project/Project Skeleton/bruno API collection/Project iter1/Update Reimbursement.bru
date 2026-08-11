@@ -1,0 +1,25 @@
+meta {
+  name: Update Reimbursement
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:7000/reimbursements/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "amount": 249.99,
+    "description": "Client dinner - Q3 kickoff",
+    "type": "FOOD",
+    "status": "PENDING"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

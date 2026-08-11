@@ -12,13 +12,19 @@ public class DepartmentService {
         this.departmentDao = departmentDao;
     }
 
-    public void fakeServiceMethod() {
-        departmentDao.fakeDaoMethod();
-    }
 
     public Department createDept(Department dept) {
         try {
             return this.departmentDao.saveDepartment(dept);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Department findDepartmentByName(String name) {
+
+        try {
+            return this.departmentDao.findDepartmentByName(name);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

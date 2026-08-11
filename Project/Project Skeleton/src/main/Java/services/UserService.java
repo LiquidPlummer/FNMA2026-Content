@@ -13,10 +13,6 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public void fakeServiceMethod() {
-        userDao.fakeDaoMethod();
-    }
-
     public User saveUser(User newUser) {
         try {
             return this.userDao.create(newUser);
@@ -29,6 +25,15 @@ public class UserService {
     public User findUserByUsername(String username) {
         try {
             return this.userDao.findUserByUsername(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public User findUserById(Integer id) {
+        try {
+            return this.userDao.findUserById(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }

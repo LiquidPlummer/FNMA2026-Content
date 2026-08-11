@@ -3,15 +3,10 @@ package daos;
 import models.Department;
 import utils.ConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DepartmentDao {
-    public void fakeDaoMethod() {
-        return;
-    }
+
 
     /*
     CREATE
@@ -40,4 +35,20 @@ public class DepartmentDao {
         }
         return dept;
     }
+
+    public Department findDepartmentByName(String name) throws SQLException {
+        Connection conn = ConnectionManager.getConnection();
+        String sql = "SELECT * FROM departments WHERE name = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, name);
+
+        ResultSet rs = pstmt.executeQuery();
+        Department dept = new Department();
+        if(rs.next()) {
+            dept.setId(rs.getInt(1));
+            dept.setName(rs.getString(2));
+        }
+        return dept;
+    }
+
 }

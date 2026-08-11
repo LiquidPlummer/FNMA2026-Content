@@ -1,0 +1,22 @@
+meta {
+  name: Create new Dept
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:7000/departments
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Engineering"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -8,12 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao {
-    User fakeUserStore;
-
-    public void fakeDaoMethod() {
-        return;
-    }
-
 
     /*
     This fake functionality is just here until we replace it with real database JDBC
@@ -85,6 +79,26 @@ public class UserDao {
         }
 
         //END OF PATTERN B
+
+        return resultUser;
+    }
+
+    public User findUserById(Integer id) throws SQLException {
+        Connection conn = ConnectionManager.getConnection();
+        String sql = "SELECT * FROM users WHERE id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        User resultUser = new User();
+        if(rs.next()) {
+            resultUser.setId(rs.getInt("id"));
+            resultUser.setUsername(rs.getString("username"));
+            resultUser.setPassword(rs.getString("password"));
+            resultUser.setFirstName(rs.getString("first_name"));
+            resultUser.setLastName(rs.getString("last_name"));
+            resultUser.setDept_id(rs.getInt("dept_id"));
+            resultUser.setRole(rs.getString("role"));
+        }
 
         return resultUser;
     }
