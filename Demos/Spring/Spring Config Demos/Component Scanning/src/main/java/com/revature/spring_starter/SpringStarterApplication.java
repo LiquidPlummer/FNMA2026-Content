@@ -33,7 +33,7 @@ public class SpringStarterApplication {
 
 	public static void main(String[] args) {
 
-        MyService service1;//did we get classloaded here? No!
+        MyService service1;  //did we get classloaded here? No!
 
 		ApplicationContext applicationContext = SpringApplication.run(SpringStarterApplication.class, args);
 

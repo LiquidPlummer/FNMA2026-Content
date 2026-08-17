@@ -26,7 +26,7 @@ dependencies {
     //These are the Spring Modules we will look at. Each one requires core and will bring it in transitively.
     // implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // implementation 'org.springframework.boot:spring-boot-starter-security'
-    // implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 
     //These are the test implementations for unit testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
