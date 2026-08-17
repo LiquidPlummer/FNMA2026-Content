@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Note here that we have added some extra attributes to the bean tag. We have included the:
+  xmlns:context="http://www.springframework.org/schema/context"
+attribute and we also added an extra string to the schemaLocations as well:
+   http://www.springframework.org/schema/context
+These let us add <context> tags, which allow us to mention other configuration options:
+component scanning, and "annotation-config" which is Java config. (@Configuration and @Bean)
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- These two tags tell spring to do other configurations as well as XML -->
+    <context:component-scan base-package="com.example.componentScan" />
+    <context:annotation-config />
+
+    <!-- Here, because we want the Configurer class to define our Java configuration,
+    we include it as a bean -->
+    <bean id="configurer" class="com.example.javaConfig.Configurer">
+    </bean>
+
+    <!-- This one is just an ordinary XML bean definition -->
+    <bean id = "myClass" class = "com.example.xmlConfig.MyClass">
+        <constructor-arg ref="myComponent" />
+    </bean>
+
+
+</beans>
