@@ -16,7 +16,8 @@ import java.util.*;
     private Integer resolver;
 * */
 public class ReimbursementDao {
-    private static final Set<String> ALLOWED_COLUMNS = Set.of("reimbursement_id", "amount", "description", "type", "status", "author_id", "resolver_id");
+    private static final Set<String> ALLOWED_COLUMNS = Set.of("reimbursement_id", "amount",
+            "description", "type", "status", "author_id", "resolver_id");
 
     public ReimbursementDao() {
 

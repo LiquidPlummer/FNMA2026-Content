@@ -6,7 +6,7 @@ This document specifies Iteration 2 of the ERS. It defines the iteration's objec
 
 Iteration 2 migrates the backend from Javalin to Spring Boot and introduces genuine authentication: clients authenticate to receive a bearer token, which must accompany all subsequent requests. Input validation and application logging — stretch goals in Iteration 1 — are now core requirements. Application functionality otherwise remains as specified in Iteration 1. The frontend is carried forward unchanged, adjusted only as needed to remain functional.
 
-Later iterations will replace the frontend entirely and extend the system with new features.
+Iteration 3 will replace the frontend entirely and is now the project's final iteration. New features beyond this iteration's core scope appear as stretch goals split across both remaining iterations: the backend slice here in Iteration 2, the matching frontend slice in Iteration 3.
 
 ## Objectives
 
@@ -68,6 +68,20 @@ These are optional. Attempt them only after all core requirements are complete.
 
 - As a user, I can request paginated and sorted lists of reimbursements
 - As a user, my token expires after a set period, and I can refresh it without re-entering credentials
+
+The features below were originally planned for a separate Iteration 4; that iteration has been folded into Iterations 2 and 3, with more time allotted to each. Each is scoped here to its **backend slice only** — the matching frontend work is a stretch goal in Iteration 3. Full requirements, technical notes, and definition of done for each are in [`../Features/`](../Features/).
+
+| Feature (backend slice) | Size | Points | Spec |
+|---|---|---|---|
+| Manager comments — extend the deny endpoint with an optional comment | S | 1 | `ers-feature-manager-comments.md` |
+| User profile management — endpoints to view/update the authenticated user's name and password | S | 1 | `ers-feature-user-profile-page.md` |
+| Dashboard data — a summary endpoint returning role-appropriate counts and recent activity | M | 2 | `ers-feature-dashboard.md` |
+| Saved reimbursements — `DRAFT` status plus draft create/edit/delete/submit endpoints | M | 2 | `ers-feature-saved-reimbursements.md` |
+| Bulk actions — an endpoint resolving multiple pending requests in one call | M | 2 | `ers-feature-bulk-actions.md` |
+| Admin role — third role, user list, and role-change endpoints | L | 3 | `ers-feature-admin-role.md` |
+| Department management — department CRUD-minus-delete and user reassignment endpoints | L | 3 | `ers-feature-department-management.md` |
+| Audit trail — audit entity, recording, and history endpoint | L | 3 | `ers-feature-audit-trail.md` |
+| Receipts & image uploads — multipart upload, storage, listing, and retrieval endpoints | XL | 5 | `ers-feature-receipts-image-uploads.md` |
 
 ## Deliverables
 

@@ -4,9 +4,9 @@
 
 This document specifies Iteration 3 of the ERS. It defines the iteration's objectives, the functional and non-functional requirements, the user stories the application must satisfy, and the deliverables to be submitted.
 
-Iteration 3 replaces the minimal frontend with a complete client application built in Angular and TypeScript. The Spring Boot backend from Iteration 2 is carried forward largely unchanged; work in this iteration concentrates on the client. The result of this iteration is a finished product: a complete, polished ERS running locally.
+Iteration 3 replaces the minimal frontend with a complete client application built in Angular and TypeScript. The Spring Boot backend from Iteration 2 is carried forward largely unchanged; work in this iteration concentrates on the client. The result of this iteration's core requirements is a finished product: a complete, polished ERS running locally.
 
-Iteration 4 will treat this finished product as an inherited codebase and extend it with new features.
+This is now the project's final iteration, and it runs for the remainder of the project's time. Once the core requirements below are complete, remaining time goes toward the stretch goals: new features (paired with their backend halves from Iteration 2), Docker Compose containerization, and a refactor/polish pass — concluding with a final presentation of the complete system.
 
 > **Note:** All backend requirements from Iteration 2 remain in effect. They are omitted from this document because they are unchanged; this specification covers only the frontend.
 
@@ -16,6 +16,7 @@ Iteration 4 will treat this finished product as an inherited codebase and extend
 - Consume the existing REST API, including token-based authentication
 - Provide distinct views and navigation appropriate to each role
 - Deliver a polished, usable interface: this iteration produces the finished product
+- As the final iteration, close out the project: pursue stretch-goal features, containerize the full stack, refactor and polish, and conclude with a presentation of the completed system
 
 ## Requirements
 
@@ -60,8 +61,28 @@ These are optional. Attempt them only after all core requirements are complete.
 - As a user, I can sort list views by column
 - As a user, I can toggle between light and dark themes
 
+The features below were originally planned for a separate Iteration 4; that iteration has been folded into Iterations 2 and 3, with more time allotted to each. Each is scoped here to its **frontend slice**, pairing with the matching Iteration 2 backend stretch goal to complete the full feature described in its spec. Full requirements, technical notes, and definition of done for each are in [`../Features/`](../Features/).
+
+| Feature (frontend slice) | Size | Points | Spec |
+|---|---|---|---|
+| Manager comments UI — comment input on deny, comment shown on denied requests | S | 1 | `ers-feature-manager-comments.md` |
+| User profile page — a view/route for viewing and editing name and password | S | 1 | `ers-feature-user-profile-page.md` |
+| Dashboard UI — the post-login landing view | M | 2 | `ers-feature-dashboard.md` |
+| Saved reimbursements UI — draft save/edit/delete/submit actions in the employee's list | M | 2 | `ers-feature-saved-reimbursements.md` |
+| Bulk actions UI — multi-select, confirmation, and outcome feedback in the manager's list | M | 2 | `ers-feature-bulk-actions.md` |
+| Admin role UI — an admin-only user management view | L | 3 | `ers-feature-admin-role.md` |
+| Department management UI — an admin-only department management view | L | 3 | `ers-feature-department-management.md` |
+| Audit trail UI — a history section on the request detail view | L | 3 | `ers-feature-audit-trail.md` |
+| Receipts & image uploads UI — upload, thumbnail, and full-size viewing flows | XL | 5 | `ers-feature-receipts-image-uploads.md` |
+
+Also carried forward as stretch goals, previously Iteration 4 non-functional work:
+
+- Containerize the full stack with Docker Compose (`docker compose up` runs database, backend, and frontend)
+- A refactor/polish pass across the stack: address technical debt, inconsistencies, and usability issues
+
 ## Deliverables
 
 - Codebase in a GitHub repository
-- Live demonstration of the application
+- Live demonstration of the application, serving as the project's final presentation
 - Frontend architecture summary (components, services, routing): a brief written summary or a detailed diagram
+- Updated ERD reflecting the final schema, if any completed stretch goals changed it

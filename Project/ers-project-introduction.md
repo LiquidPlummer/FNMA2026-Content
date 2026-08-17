@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document specifies the Expense Reimbursement System (ERS), a full-stack web application for managing employee expense reimbursements. We will construct this system over four iterations.
+This document specifies the Expense Reimbursement System (ERS), a full-stack web application for managing employee expense reimbursements. We will construct this system over three iterations.
 
 Employees incur expenses on behalf of the company and submit reimbursement requests. Managers review pending requests and approve or deny them. The system records each request through its complete lifecycle.
 
@@ -64,13 +64,12 @@ Represents a single reimbursement request.
 
 ## Project Structure
 
-We will build the ERS in four iterations. Each iteration builds upon the previous one: new technologies are introduced, layers are rewritten, and features are added to an existing codebase.
+We will build the ERS in three iterations. Each iteration builds upon the previous one: new technologies are introduced, layers are rewritten, and features are added to an existing codebase.
 
 | Iteration | Focus |
 |-----------|-------|
 | 1 | Java backend, relational database, REST API (Javalin), minimal HTML/CSS/JS frontend |
-| 2 | Migration of the API to Spring Boot |
-| 3 | Frontend rewritten in Angular/TypeScript; complete, polished product |
-| 4 | Extension of the existing codebase with new features; final presentations |
+| 2 | Migration of the API to Spring Boot; backend stretch goals extend the codebase with new features |
+| 3 | Frontend rewritten in Angular/TypeScript; complete, polished product. Runs for the remainder of the project — frontend stretch goals complete the new features started in Iteration 2, and the iteration concludes with final presentations |
 
 All components run locally. Detailed requirements for each iteration are specified in separate documents.

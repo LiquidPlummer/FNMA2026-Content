@@ -1,4 +1,6 @@
 
+
+
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,7 +21,7 @@ CREATE TABLE departments (
 DROP TABLE IF EXISTS reimbursements;
 CREATE TABLE reimbursements (
     reimbursement_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    amount DECIMAL(10, 2) NOT NULL,
+    amount REAL NOT NULL,
     description VARCHAR(500),
     type VARCHAR(500) NOT NULL,
     status VARCHAR(500) NOT NULL DEFAULT 'PENDING',
@@ -39,13 +41,16 @@ INSERT INTO users (username, password, first_name, last_name, dept_id, role)
 VALUES ('admin', 'pass123!', 'admin', 'admin', 1, 'ADMIN')
 
 INSERT INTO reimbursements (amount, description, "type", status, author_id, resolver_id) 
-VALUES(123.45, 'test', 'FOOD', 'PENDING', 1, 2);
+VALUES(123.45, 'test', 'test', 'test', 1, 2);
 
 SELECT *
 FROM users;
 
 SELECT *
 FROM departments;
+
+SELECT * 
+FROM reimbursements;
 
 
 INSERT INTO departments (name) VALUES ("test");
@@ -57,4 +62,3 @@ VALUES ('kplummer', 'pass123', 'Kyle', 'Plummer', 1, 'admin');
 
 SELECT id, username, password, first_name, last_name, U.dept_id, ROLE, name AS dept_name FROM users U JOIN departments D ON D.dept_id = U.dept_id WHERE D.name = ?;
 
-SELECT * FROM reimbursements;

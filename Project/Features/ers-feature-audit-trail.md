@@ -41,7 +41,7 @@ Every status change to a reimbursement request is recorded as an immutable audit
 - Schema: a new audit table — id, reimbursement reference, prior status (nullable), new status, acting-user reference, timestamp. This is a new entity and belongs on the final ERD
 - Backend: a history endpoint under the reimbursement resource (e.g., `GET /reimbursements/{id}/history`) reusing the request's existing authorization check; entry creation lives beside the status-change logic in the service layer so controllers cannot bypass it
 - Frontend: a history section in the request detail view (or an expandable panel in the list), rendering each entry as transition, actor, and timestamp
-- If other Iteration 4 features that add status transitions are implemented alongside this one, integrate them at the service layer so their transitions are captured without special cases
+- If other features in this list that add status transitions (e.g., bulk actions, saved reimbursements) are implemented alongside this one, integrate them at the service layer so their transitions are captured without special cases
 
 ## Definition of Done
 
