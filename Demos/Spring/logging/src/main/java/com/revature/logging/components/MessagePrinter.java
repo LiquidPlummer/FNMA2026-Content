@@ -1,4 +1,4 @@
-package com.revature.spring_starter.components;
+package com.revature.logging.components;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;

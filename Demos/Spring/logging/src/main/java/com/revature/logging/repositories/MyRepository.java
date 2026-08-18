@@ -1,4 +1,4 @@
-package com.revature.spring_starter.repositories;
+package com.revature.logging.repositories;
 
 import org.springframework.stereotype.Repository;
 

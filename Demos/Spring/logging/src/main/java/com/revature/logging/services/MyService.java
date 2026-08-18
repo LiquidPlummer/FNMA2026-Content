@@ -1,7 +1,5 @@
-package com.revature.spring_starter.services;
+package com.revature.logging.services;
 
-import com.revature.spring_starter.repositories.MyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;

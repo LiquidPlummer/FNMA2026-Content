@@ -1,14 +1,10 @@
-package com.revature.spring_starter.controllers;
+package com.revature.logging.controllers;
 
-import com.revature.spring_starter.components.MyComponent;
-import com.revature.spring_starter.services.MyService;
+import com.revature.logging.components.MyComponent;
+import com.revature.logging.services.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.boot.context.properties.bind.Name;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController//implies @Controller & @ResponseBody, applied to all methods in the class
