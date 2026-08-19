@@ -1,5 +1,6 @@
 package com.revature.web.controllers;
 
+import com.revature.web.models.ExampleModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
@@ -14,10 +15,57 @@ import java.time.Duration;
 @RequestMapping("/example")
 public class ExampleController {
 
+    //We might rarely need access to the underlying request and response objects
+    //we just set those types as params, and Spring will inject them for us
     @GetMapping("/request-and-response-objects")
     public void requestAndResponseObjects(HttpServletRequest req, HttpServletResponse resp) {
 
     }
+
+
+    //path params
+    @PostMapping("/users/{username}/accounts/{account-id}")
+    public void pathParams(
+            @PathVariable String username,
+            @PathVariable("account-id") Integer accountId
+            ) {
+        System.out.println(username);
+        System.out.println(accountId);
+    }
+
+
+    //query params
+    @PostMapping//   /books/?title=It&by=King
+    public void queryParams(
+            @RequestParam String title,
+            @RequestParam("by") String author
+    ) {
+        System.out.println(title);
+        System.out.println(author);
+    }
+
+    //request body
+    @PostMapping
+    public void requestBody(@RequestBody ExampleModel model) {
+        System.out.println(model);
+    }
+
+    //Response Body
+    @GetMapping
+    public @ResponseBody ExampleModel getExampleModel() {
+        //The @ResponseBody annotation tells spring that whatever is returned should
+        //be converted into JSON and sent in the response
+        return new ExampleModel();
+    }
+
+    //ResponseEntity
+    @GetMapping
+    public ResponseEntity<ExampleModel> getResponseEntity() {
+        return ResponseEntity.status(200)
+                .header("key", "value")//we can set all sorts of things in response entity
+                .body(new ExampleModel());
+    }
+
 
     @GetMapping("/request-headers")
     public void headers(
@@ -27,6 +75,8 @@ public class ExampleController {
         //content length is a required header, we will get an exception if the request doesn't have it
         //But the other, X-Trace-Id, is not required. If missing you won't get that info, but won't get
         //an exception either
+        System.out.println(contentLength);
+        System.out.println(traceId);
     }
 
     @GetMapping("/response-headers")
@@ -55,21 +105,15 @@ public class ExampleController {
                 .sameSite("Strict")
                 .build();
 
-        ResponseEntity.noContent()
-                .header(HttpHeaders.SET_COOKIE, cookie.toString());
+        return ResponseEntity.noContent()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .build();
 
 
         //These both do the same thing, cookies are just response headers with the key "Set-Cookie"
 //        resp.addCookie(cookie);
-        resp.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+//        resp.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 //        resp.addHeader("Set-Cookie", cookie);
     }
-
-    //path params
-
-    //query params
-
-    //request body & response body
-
 
 }
