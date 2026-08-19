@@ -1,7 +1,5 @@
 package com.revature.web;
 
-import com.revature.web.controllers.ExampleController;
-import com.revature.web.models.ExampleModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
