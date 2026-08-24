@@ -1,5 +1,6 @@
 package com.revature.web.controllers;
 
+import com.revature.web.exceptions.ExampleException2;
 import com.revature.web.models.ExampleModel;
 import com.revature.web.services.ExampleService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -71,6 +72,13 @@ public class ModelController {
     @RequestMapping(path = "/example", method=RequestMethod.OPTIONS)
     public String options() {
         return "This is how we might implement a mapping for something other than post, put, pathc, delte, get";
+    }
+
+    @GetMapping("/test-exceptions2")
+    @ResponseStatus(HttpStatus.OK)
+    public String testExceptions2() {
+        throw new ExampleException2("This is example 2");
+
     }
 
 

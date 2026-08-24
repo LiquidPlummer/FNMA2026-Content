@@ -1,9 +1,14 @@
 package com.revature.web.controllers;
 
+import com.revature.web.exceptions.ErrorResponse;
+import com.revature.web.exceptions.ExampleException;
+import com.revature.web.exceptions.ExampleException2;
+import com.revature.web.exceptions.ExampleException3;
 import com.revature.web.models.ExampleModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +30,7 @@ public class ExampleController {
 
     //path params
     @PostMapping("/users/{username}/accounts/{account-id}")
+    @ResponseStatus(HttpStatus.OK)
     public void pathParams(
             @PathVariable String username,
             @PathVariable("account-id") Integer accountId
@@ -35,7 +41,7 @@ public class ExampleController {
 
 
     //query params
-    @PostMapping//   /books/?title=It&by=King
+    @PostMapping("/query-params")//   /books/?title=It&by=King
     public void queryParams(
             @RequestParam String title,
             @RequestParam("by") String author
@@ -45,13 +51,13 @@ public class ExampleController {
     }
 
     //request body
-    @PostMapping
+    @PostMapping("/request-body")
     public void requestBody(@RequestBody ExampleModel model) {
         System.out.println(model);
     }
 
     //Response Body
-    @GetMapping
+    @GetMapping("/response-body")
     public @ResponseBody ExampleModel getExampleModel() {
         //The @ResponseBody annotation tells spring that whatever is returned should
         //be converted into JSON and sent in the response
@@ -59,7 +65,7 @@ public class ExampleController {
     }
 
     //ResponseEntity
-    @GetMapping
+    @GetMapping("/response-entity")
     public ResponseEntity<ExampleModel> getResponseEntity() {
         return ResponseEntity.status(200)
                 .header("key", "value")//we can set all sorts of things in response entity
@@ -90,11 +96,12 @@ public class ExampleController {
 
     }
 
-
+    @GetMapping("/request-cookies")
     public void requestCookies(@CookieValue("username") String username) {//getting cookies is easy, just like headers
         System.out.println(username);
     }
 
+    @GetMapping("/response-cookies")
     public ResponseEntity<String> responseCookies(HttpServletResponse resp) {
         //Build a cookie, then set it in the "Set-Cookie" response header
         ResponseCookie cookie = ResponseCookie.from("username", "kplummer")
@@ -114,6 +121,32 @@ public class ExampleController {
 //        resp.addCookie(cookie);
 //        resp.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 //        resp.addHeader("Set-Cookie", cookie);
+    }
+
+
+    @DeleteMapping("/test-exceptions")
+    public String testExceptions() {
+        throw new ExampleException("This is an example");
+    }
+
+    @DeleteMapping("/test-exceptions2")
+    @ResponseStatus(HttpStatus.OK)
+    public String testExceptions2() {
+        throw new ExampleException2("This is example 2");
+
+    }
+
+    @DeleteMapping("/test-exceptions3")
+    @ResponseStatus(HttpStatus.OK)
+    public String testExceptions3() {
+        throw new ExampleException3("This is example 3");
+
+    }
+
+    @ExceptionHandler(ExampleException2.class)
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public ErrorResponse exceptionHandler(ExampleException2 e) {
+        return new ErrorResponse(418, "This is a teapot", e.getMessage());
     }
 
 }

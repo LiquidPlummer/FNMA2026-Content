@@ -7,7 +7,8 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication(scanBasePackages = {
         "com.revature.web.controllers",
         "com.revature.web.services",
-        "com.revature.web.repositories"
+        "com.revature.web.repositories",
+        "com.revature.web.aspects"
 })
 public class SpringStarterApplication {
 
