@@ -1,0 +1,8 @@
+widget,10,2.50
+gadget,5,10.00
+gizmo,three,4.25
+doohickey,8
+sprocket,12,1.75
+flange,7,1O.50
+
+cog,20,0.60

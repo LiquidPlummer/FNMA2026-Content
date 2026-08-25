@@ -1,0 +1,30 @@
+meta {
+  name: register
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:7000/users/register
+  body: json
+  auth: inherit
+}
+
+headers {
+  role: admin
+}
+
+body:json {
+  {
+    "firstName": "Kyle",
+    "lastName": "Plummer",
+    "password": "pass123",
+    "username": "kplummer",
+    "role":"admin"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

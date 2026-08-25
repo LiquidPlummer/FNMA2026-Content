@@ -1,0 +1,9 @@
+{
+  "name": "fetching-data-from-the-pokeapi",
+  "version": "1.0.0",
+  "description": "Guided practice making HTTP requests with fetch.",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "type": "module"
+}

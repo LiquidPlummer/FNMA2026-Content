@@ -1,0 +1,18 @@
+/* Element Selector - selects HTML tags */
+body {
+    background-color: #000000;
+    font-family: Arial, sans-serif;
+}
+
+/* Class selector - selects all elements with the matching class attribute */
+.DivClass {
+    color: blueviolet;
+    background-color: rgb(3, 48, 248);
+
+}
+
+/* ID Selector: applies style to anything with this matching ID attribute */
+#MyDiv {
+    color: red;
+    background-color: rgb(8, 244, 35);
+}

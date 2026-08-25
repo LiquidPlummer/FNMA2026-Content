@@ -1,0 +1,25 @@
+meta {
+  name: post new user
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:7000/users
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "firstName": "Kyle",
+    "lastName": "Plummer",
+    "password": "pass123",
+    "username": "kplummer"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

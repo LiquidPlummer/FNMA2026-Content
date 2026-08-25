@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.revature'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.slf4j:slf4j-simple:2.0.13")
+    // Bumped past the redshift driver's own declared 2.31.2 -- that version
+    // predates "aws login"/login_session credential support entirely, which
+    // caused it to silently report "no credentials" instead of resolving them.
+    implementation platform('software.amazon.awssdk:bom:2.46.6')
+    implementation 'com.amazon.redshift:redshift-jdbc42:2.2.7'
+
+    // The driver's own POM marks these as optional, so they don't come in
+    // transitively -- without them, IAM auth fails at runtime with
+    // ClassNotFoundException (e.g. missing Jackson classes).
+    implementation 'software.amazon.awssdk:auth'
+    implementation 'software.amazon.awssdk:redshift'
+    implementation 'software.amazon.awssdk:redshiftserverless'
+    implementation 'software.amazon.awssdk:sts'
+
+    // Required to resolve credentials from "aws login" (login_session profile
+    // property) -- same fix needed in the DynamoDB project.
+    implementation 'software.amazon.awssdk:signin'
+
+    // The driver's own code references plain (unshaded) com.fasterxml.jackson
+    // classes directly. AWS SDK v2 doesn't cover this -- it shades its own
+    // copy of Jackson under a different package, so it's invisible here.
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.22.0'
+
+
+}
+application {
+    mainClass = 'com.revature.Main'
+}

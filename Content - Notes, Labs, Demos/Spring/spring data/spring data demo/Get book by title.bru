@@ -1,0 +1,16 @@
+meta {
+  name: Get book by title
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/books/The Road
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

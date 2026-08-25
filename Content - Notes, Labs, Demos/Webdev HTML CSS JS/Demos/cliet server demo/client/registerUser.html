@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts.js"></script>
+
+    <nav>
+        <a href="registerUser.html">Register New User</a>  |  
+        <a href="viewUser.html">View User</a>
+        <hr>
+    </nav>
+</head>
+<body>
+    <h1 style="text-align: center;">New User Registration!</h1>
+    <form>
+        <label>First Name:</label>
+        <input type="text" id="firstName" placeholder="Max"><br>
+
+        <label>Last Name:</label>
+        <input type="text" id="lastName" placeholder="Von Sydow"><br>
+
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="esbern"><br>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="dovahkiin"><br>
+
+        <label>Role:  </label>
+        <input type="radio" name="role" id="roleManager" value="ADMIN">
+        <label>Manager   |   </label>
+        <input type="radio" name="role" id="roleUser" value="USER" checked>
+        <label>User</label>
+        <br>
+        <br>
+        <input type="button" value="Submit New User" id="submitButton" /*onclick="buttonPressAxios()"*/>
+    </form>
+
+
+    <hr>
+    <input type="button" value="post" id="postNewPokemon" onclick="postNewPokemon()">
+</body>
+<footer>
+    <script src="script2.js"></script>
+</footer>
+</html>

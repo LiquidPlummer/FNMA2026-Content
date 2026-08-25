@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.gradleup.shadow' version '8.3.11'
+}
+
+group = 'com.revature'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Junit
+    testImplementation platform('org.junit:junit-bom:5.11.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    //SQLite driver
+    implementation("org.xerial:sqlite-jdbc:3.49.1.0")
+
+    //Javalin, slf4j, and jackson
+    implementation("io.javalin:javalin:7.2.0")
+    implementation("org.slf4j:slf4j-simple:2.0.13")
+    //implementation("com.fasterxml.jackson.core:jackson-databind:2.21.2") //Version 2 of the jackson object mapper
+    implementation("tools.jackson.core:jackson-databind:3.2.1")//version 3 of jackson, requires additional config step
+
+    //JWTs
+    implementation("io.jsonwebtoken:jjwt-api:0.13.0")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")//This will bring in jackson 2, it won't conflict but we will have two jackson libs
+
+    implementation("org.mindrot:jbcrypt:0.4")
+}
+
+application {
+    mainClass = 'com.revature.demo.Main'
+}
+
+// Stretch goal (Section 7): produces build/libs/app.jar as a single
+// runnable fat jar — `java -jar app.jar` works with no external classpath.
+shadowJar {
+    archiveBaseName.set('app')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+    mergeServiceFiles()
+}
+
+test {
+    useJUnitPlatform()
+}
