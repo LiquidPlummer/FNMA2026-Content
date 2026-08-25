@@ -1,5 +1,20 @@
 //This is how we might import axios here, but importing it into the HTML works just fine still.
 //import axios from "https://cdn.jsdelivr.net/npm/axios/+esm";
+
+async function postNewPokemon() {
+    console.log("POSTing a new pokemon...")
+
+    let response = await fetch("https://pokeapi.co/api/v2/pokemon/jonny", {
+        method: "POST",
+        headers: {
+            "Content-Length": 88
+        }, 
+        body: jonny
+    })
+    let body = await response.json()
+    console.log(body)
+}
+
 function buttonPressAxios() {
     console.log("Submit button pressed...")
 

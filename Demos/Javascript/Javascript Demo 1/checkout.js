@@ -1,8 +1,9 @@
 // checkout.js
 const form = {
-  price: "19.99",
-  quantity: "3",
-  discountCode: "save10"
+    price: "19.99",
+    quantity: "3",
+    discountCode: "save10",
+    calculateSubtotal: function() {return this.price * this.quantity}
 }
 
 
@@ -101,3 +102,13 @@ function myFunc() {
 //First Order Variables
 let myOtherFunc = myFunc;
 let myArrowFunc = () => {console.log("??????")}
+
+
+let myThirdFunc = function(x) {return x*2}
+
+let result = myThirdFunc(5)
+console.log(result)
+
+
+
+console.log(form.calculateSubtotal())
