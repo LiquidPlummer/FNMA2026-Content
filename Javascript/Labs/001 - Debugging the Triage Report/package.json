@@ -1,9 +1,0 @@
-{
-  "name": "debugging-the-triage-report",
-  "version": "1.0.0",
-  "description": "Find and fix six JavaScript fundamentals bugs.",
-  "scripts": {
-    "test": "node src/test.js"
-  },
-  "type": "module"
-}

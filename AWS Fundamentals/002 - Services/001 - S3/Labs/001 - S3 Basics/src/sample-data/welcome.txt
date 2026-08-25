@@ -1,5 +1,0 @@
-Welcome to the S3 basics lab!
-
-This file exists purely as something real to upload, download, and inspect.
-If you're reading this after downloading it back from a bucket, the round
-trip worked.
