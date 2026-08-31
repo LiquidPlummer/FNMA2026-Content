@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    background-color: gainsboro;
+}
+
+.pokemonContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;   
+}
+
+.pokemonCard {
+    flex: 0 0 25%;  /* flex-grow, flex-shrink, flex-basis */
+    border: 2px;
+    border-style: solid;
+    margin: 4px;
+    padding: 4px;
+    justify-content: center; 
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+}
+
+div > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+div > p {
+    display: block;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}

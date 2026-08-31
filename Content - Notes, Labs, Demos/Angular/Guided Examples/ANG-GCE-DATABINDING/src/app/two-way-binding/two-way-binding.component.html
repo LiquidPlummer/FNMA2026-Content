@@ -1,0 +1,12 @@
+<h1>Two-Way Data Binding</h1>
+<p>Two-way data binding is a combination of property and event binding, and only works with 
+a specific setup. Below are three elements across two components. The h1 element uses string 
+interpolation to display the value of 'textString'. That value is two-way bound to both the 
+child component as well as the input element.</p>
+<br>
+<div class="borderBox">
+    <h1>{{textString}}</h1>
+    <input type="text" [(ngModel)]="textString">
+    <br>
+    <app-two-way-child [(childValue)]="textString"></app-two-way-child>
+</div>

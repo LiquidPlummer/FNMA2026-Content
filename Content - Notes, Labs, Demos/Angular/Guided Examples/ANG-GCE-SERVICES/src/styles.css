@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    background-color: gainsboro;
+}
+
+.numberInput {
+    width: 30px;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.flexItem {
+    border: 2px;
+    border-style: solid;
+    margin: 30px 20px;
+    padding: 25px;
+    justify-content: center; 
+}
+
+.borderBox {
+    border-style: solid;
+    width: 45%;
+    min-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, p {
+    text-align: center;
+}
+
+p {
+    font-size: 22px;
+}
+
+.notes {
+    font-size: 22px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+

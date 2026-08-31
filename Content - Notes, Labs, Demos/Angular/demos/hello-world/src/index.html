@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- ===========================================================================
+     THE "SINGLE PAGE" OF THE SINGLE PAGE APPLICATION.
+
+     This is the only html document the server ever hands the browser. Notice how
+     little is in it - there is no markup here for any of our components. The CLI
+     injects <script> tags for the compiled JS bundles at build time, those bundles
+     run main.ts, and Angular fills the page in from there.
+     ======================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HelloWorld</title>
+  <!-- <base href="/"> tells the Angular Router what the app's root URL is, so it
+       can rewrite URLs like /one and /two without the browser requesting them
+       from the server. Routing in an SPA is a lie we tell the address bar. -->
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <!-- This is the ROOT COMPONENT's selector, declared in app.ts as
+       selector: 'app-root'. bootstrapApplication(App, ...) in main.ts looks for
+       this tag and renders the App component into it. Everything you see in the
+       running app is inside this one element. -->
+  <app-root></app-root>
+</body>
+</html>

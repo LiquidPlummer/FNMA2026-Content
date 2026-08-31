@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    background-color: gainsboro;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;  
+}
+
+.flexItem {
+    flex: 0 0 25%;  /* flex-grow, flex-shrink, flex-basis */
+    border: 2px;
+    border-style: solid;
+    margin: 4px;
+    padding: 4px;
+    justify-content: center; 
+}
+
+div > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+h1, h2, p {
+    text-align: center;
+}
+
+.bigImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+

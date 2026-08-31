@@ -1,0 +1,15 @@
+<h1>One-Way Data Binding</h1>
+There are three different forms of one-way data binding on display in this component:
+<ul>
+    <li><b>String Interpolation</b> shows the text of the chosen color below</li>
+    <li><b>Property Binding</b> sets the color property of the span element below</li>
+    <li><b>Event Binding</b> invokes the color methods when the buttons are clicked</li>
+</ul>
+<br>
+<div class="borderBox">
+    <h1>Color: <span [style.color]="colorString">{{colorString}}</span></h1>
+    <button (click)="red()">red</button> | 
+    <button (click)="green()">green</button> | 
+    <button (click)="blue()">blue</button> | 
+    <button (click)="black()">black</button>
+</div>

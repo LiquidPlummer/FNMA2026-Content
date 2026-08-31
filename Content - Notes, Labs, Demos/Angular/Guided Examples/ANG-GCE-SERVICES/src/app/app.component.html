@@ -1,0 +1,18 @@
+<h1>ANG-GCE-SERVICES</h1>
+<p class="notes">This project explores the use of Angular services to share data and functionality 
+  between multiple components. Both the values a and b are stored in the service, as are 
+  each of the arithmetic funtions used.</p>
+<p class="notes">We just need to provide the service to any component that needs it, then inject it 
+  into the component class.</p>
+<div class="borderBox">
+  <h1>
+    a: <input class="numberInput" type="number" min="-9" max="9" [(ngModel)]="this.calculator.a">
+    b: <input class="numberInput" type="number" min="-9" max="9" [(ngModel)]="this.calculator.b">
+  </h1>
+  <div class="flexContainer">
+    <app-adder></app-adder>
+    <app-subtractor class="flexItem"></app-subtractor>
+    <app-multiplier class="flexItem"></app-multiplier>
+    <app-divider class="flexItem"></app-divider>
+  </div>
+</div>

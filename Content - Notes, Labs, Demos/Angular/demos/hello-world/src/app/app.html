@@ -1,0 +1,21 @@
+<!-- ===========================================================================
+     THE ROOT TEMPLATE.
+
+     Every tag below is a COMPONENT SELECTOR, not real html. Angular replaces
+     each one with that component's own rendered template, which is how the
+     component tree gets built:  App -> One -> OneChild, App -> Two, and so on.
+
+     None of these tags would work if the matching class were missing from the
+     imports array in app.ts - a standalone component's template can only see
+     what that component explicitly imported. Delete One from that array and
+     watch <app-one> below turn into a compiler error.
+
+     Normally an app would render <router-outlet> here and let the Router decide
+     what to show. This demo hardwires the children instead, which is why the
+     build warns that RouterOutlet is imported but unused.
+     ======================================================================== -->
+<hr>
+<app-one></app-one>
+<hr>
+<app-two></app-two>
+<hr>

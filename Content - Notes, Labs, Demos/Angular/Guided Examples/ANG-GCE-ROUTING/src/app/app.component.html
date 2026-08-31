@@ -1,0 +1,33 @@
+<h1>ANG-GCE-ROUTING</h1>
+<p>This demo will show Angular routing and route guards. Routing is a process by which single page applications
+  show some content while hiding other content in order to emulate navigating between multiple 
+  HTML pages. Below are three routes, each leading to a city somewhere in the world. When we navigate
+  to one of the routes we will see one of three components get rendered on screen.</p>
+<p>Each route is also protected by a route guard, which allows us to control which routes are active. 
+  These routes are all inactive by default, indicated by the lock images. Click the locks to unlock (activate) that 
+  route. Then you will be able to click the "Navigate" button and navigate to that route.</p>  
+
+<div class="flexContainer">
+  <div class="flexItem">
+    <h2>Route One</h2>
+    <img [src]="this.routeLockService.images.lockOne" (click)="this.routeLockService.toggleLockOne()"> 
+    <br>
+    <button routerLink="one"><h2>Navigate</h2></button>
+  </div>
+  <div class="flexItem">
+    <h2>Route Two</h2>
+    <img [src]="this.routeLockService.images.lockTwo" (click)="this.routeLockService.toggleLockTwo()"> 
+    <br>
+    <button routerLink="two"><h2>Navigate</h2></button>
+  </div>
+  <div class="flexItem">
+    <h2>Route Three</h2>
+    <img [src]="this.routeLockService.images.lockThree" (click)="this.routeLockService.toggleLockThree()"> 
+    <br>
+    <button routerLink="three"><h2>Navigate</h2></button>
+  </div>
+</div>
+
+<!-- Here is the router outlet, which is a placeholder for where route components should 
+be placed. When we follow a route, the component it leads to will be inlined here. -->
+<router-outlet></router-outlet>

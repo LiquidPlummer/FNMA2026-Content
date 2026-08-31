@@ -1,0 +1,15 @@
+<h2>ANG-GCE-MODULES</h2>
+<p>This is the root component of the Angular SPA. Check the developer tools in 
+your browser and you can explore the HTML. You'll find the Pikachu, Charizard, 
+and Mewtwo components nested within this component. Take a look at the imports array
+in app.component.ts and you'll notice that those components are not included. 
+Instead, we have included the PokemonModule, which transitively includes the 
+three pokemon components.</p>
+<p>Next, take a look at the NgModule decorator in pokemon.module.ts. There you'll 
+find two arrays, imports and exports. Imports works exactly like we have seen before
+making those dependencies available to that class. The exports array then also makes
+them available anywhere this module is available.</p>
+<div class="pokemonContainer">
+    <app-charizard></app-charizard>
+</div>
+<p class="disclaimer">Pokémon and Pokémon character names are trademarks of Nintendo.</p>
