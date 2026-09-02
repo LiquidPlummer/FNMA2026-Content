@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './property-binding.css',
 })
 export class PropertyBinding {
-  colorString: String = "red"
+  colorString: String = "green"
 }

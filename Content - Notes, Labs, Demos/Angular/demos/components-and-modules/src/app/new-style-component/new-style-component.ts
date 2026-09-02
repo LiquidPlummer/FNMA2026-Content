@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OldFashionedComponent } from '../old-fashioned-component/old-fashioned-component';
 
 @Component({
   selector: 'app-new-style-component',

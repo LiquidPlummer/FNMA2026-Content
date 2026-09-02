@@ -1,1 +1,8 @@
-<p>parent works!</p>
+<p>This is parent, and below is the parent's child.</p>
+Name property: {{name}}
+<br>
+textString property: {{textString}}
+<input type="text" [(ngModel)]="textString">
+<hr>
+<app-child [(name)]="name"></app-child>
+<hr>

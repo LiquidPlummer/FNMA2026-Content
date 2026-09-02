@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DataStore } from '../data-store';
 
 
 @Component({
@@ -8,12 +9,25 @@ import { Component } from '@angular/core';
   styleUrl: './child.css',
 })
 export class Child {
-  //Three data binding techniques
-  //two of these are "back to front"
-  //one of these is "front to back"
-  sentence: String = "When Kyle says 'front' and 'back', this is the back. This string is declared in the TS component class."
-  name: String = "Kyle"//apieService.getUser().response.body.json().name
-  reimbursementObj: any = {amount: 55.55, type: "FOOD"}
 
-  //The simplest version of "back to front" data binding is: String Interpolation
+  @Input() name: String | undefined
+  @Output() nameChange: EventEmitter<String> = new EventEmitter<String>();
+  dataStore: DataStore
+
+
+  constructor(dataStore: DataStore) {
+    this.dataStore = dataStore
+  }
+
+
+
+  emitChanges(event: any) {
+    // console.log("Event emitting from child...")
+    this.nameChange.emit(event.target.value)
+  }
+
+
+
+
+  
 }

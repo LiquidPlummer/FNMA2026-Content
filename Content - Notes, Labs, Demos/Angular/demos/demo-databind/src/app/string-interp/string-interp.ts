@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './string-interp.css',
 })
 export class StringInterp {
-
+  name: string = "Kyle"
+  age: number = 41
 }
