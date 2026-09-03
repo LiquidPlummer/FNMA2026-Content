@@ -6,3 +6,29 @@ computed double: {{this.computedDouble()}}
 <button (click)="this.printCount()">Print</button> | 
 <button (click)="this.incrementCount()">Increment</button> | 
 <button (click)="this.resetCount()">Reset</button>
+
+
+<h2>linkedSignal</h2>
+linked (count + 10): {{this.linkedCount()}}
+<br>
+<button (click)="this.overrideLinked()">Set linked to 999</button>
+<br>
+<small>Set it to 999, then hit Increment above. It snaps back, because its source changed.</small>
+
+
+<h2>untracked</h2>
+nickname: {{this.nickname()}}
+<br>
+<button (click)="this.changeNickname()">Change Nickname</button>
+<br>
+<small>Watch the console. Changing the nickname does NOT re-run the effect, but incrementing the count does.</small>
+
+
+<h2>model</h2>
+parent sees: {{this.sharedValue()}}
+<br>
+<button (click)="this.parentIncrement()">Parent Increment</button>
+<br>
+<app-child [(value)]="this.sharedValue" />
+<br>
+<small>One value, two owners. Either button moves both numbers.</small>
