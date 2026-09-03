@@ -1,0 +1,8 @@
+<p>{{price | currency:'USD'}}</p>
+<p>{{ created | date:'MMM d, y' | uppercase }}</p> 
+<p>{{ name | uppercase }}</p>
+<p>{{ tags | slice:0:2 }}</p> 
+
+<p>Ticks: {{ ticks$ | async }}</p>
+
+<p>{{ description | truncate:20:'-THIS HAS BEEN TRUNCATED FOR REASONS' }}</p>

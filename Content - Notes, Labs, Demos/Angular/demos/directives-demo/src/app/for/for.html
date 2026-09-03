@@ -1,0 +1,11 @@
+<div>
+  <h2>Fruit:</h2>
+  <ol>
+    @for (fruit of fruitList; track fruit.id) {
+      <li>{{$index}}-{{fruit.id}}: {{fruit.name}}</li>
+    } @empty {
+      <li>Nothing to add...</li>
+    }
+
+  </ol>
+</div>

@@ -1,0 +1,10 @@
+@if (this.predicate) {
+    <h2>Predicate is True!</h2>
+} @else if (!this.predicate) {
+    <h2>Predicate is False.</h2>
+} @else {
+    <h2>There's no real way to get here...</h2>
+}
+
+
+<button (click)="toggle()">Toggle!</button>
