@@ -1,0 +1,13 @@
+<h2>Course detail</h2>
+
+@if (course$ | async; as course) {
+  <h3>{{ course.title }}</h3>
+  <p>Taught by {{ course.instructor }}</p>
+  <p>Starts {{ course.startDate | date: 'fullDate' }}</p>
+  <p>Tuition: {{ course.tuition | currency }}</p>
+  <p>{{ course.seatsLeft }} seats left</p>
+} @else {
+  <p>No course found with id {{ courseId }}.</p>
+}
+
+<a routerLink="/courses">Back to the catalog</a>

@@ -1,0 +1,23 @@
+<h2>Spring 2026</h2>
+
+<button (click)="clearCatalog()">Clear catalog</button>
+<button (click)="restoreCatalog()">Restore catalog</button>
+
+@for (course of courses(); track course.id) {
+  <article>
+    <h3>{{ course.title }}</h3>
+    <p>Taught by {{ course.instructor }}</p>
+    <p>Starts {{ course.startDate }}</p>
+    <p>Tuition: {{ course.tuition }}</p>
+
+    @if (course.seatsLeft > 5) {
+      <p>Plenty of seats available.</p>
+    } @else if (course.seatsLeft > 0) {
+      <p>Hurry &mdash; only {{ course.seatsLeft }} seats left.</p>
+    } @else {
+      <p>Waitlist only.</p>
+    }
+  </article>
+} @empty {
+  <p>No courses are listed for this term.</p>
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 101,
+    "title": "Intro to Angular",
+    "instructor": "Elena Marsh",
+    "startDate": "2026-01-20T09:00:00",
+    "tuition": 895,
+    "seatsLeft": 12
+  },
+  {
+    "id": 102,
+    "title": "TypeScript Fundamentals",
+    "instructor": "Priya Raman",
+    "startDate": "2026-02-03T18:30:00",
+    "tuition": 640.5,
+    "seatsLeft": 3
+  },
+  {
+    "id": 103,
+    "title": "Web Accessibility",
+    "instructor": "Devon Blake",
+    "startDate": "2026-02-17T13:00:00",
+    "tuition": 1250,
+    "seatsLeft": 0
+  },
+  {
+    "id": 104,
+    "title": "Database Design",
+    "instructor": "Sam Ortiz",
+    "startDate": "2026-03-02T09:00:00",
+    "tuition": 1100,
+    "seatsLeft": 24
+  },
+  {
+    "id": 105,
+    "title": "Version Control with Git",
+    "instructor": "Maya Chen",
+    "startDate": "2026-03-16T16:15:00",
+    "tuition": 425,
+    "seatsLeft": 1
+  },
+  {
+    "id": 106,
+    "title": "Testing Fundamentals",
+    "instructor": "Jordan Vega",
+    "startDate": "2026-03-30T10:00:00",
+    "tuition": 780,
+    "seatsLeft": 9
+  }
+]

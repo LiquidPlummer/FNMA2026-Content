@@ -1,0 +1,12 @@
+<h2>Catalog</h2>
+
+@if (courses$ | async; as courses) {
+  @for (course of courses; track course.id) {
+    <article>
+      <h3>{{ course.title }}</h3>
+      <p>Taught by {{ course.instructor }} &mdash; {{ course.tuition | currency }}</p>
+    </article>
+  } @empty {
+    <p>No courses are listed for this term.</p>
+  }
+}

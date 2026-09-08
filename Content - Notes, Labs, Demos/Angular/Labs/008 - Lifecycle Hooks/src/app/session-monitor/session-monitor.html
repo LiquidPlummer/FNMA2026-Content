@@ -1,0 +1,8 @@
+<h2>Monitoring: {{ roomName() }}</h2>
+
+<button (click)="nextRoom()">Switch room</button>
+<button (click)="toggleTimer()">Show / hide timer</button>
+
+@if (timerVisible()) {
+  <app-session-timer [roomName]="roomName()" />
+}

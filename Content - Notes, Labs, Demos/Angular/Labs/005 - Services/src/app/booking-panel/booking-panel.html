@@ -1,0 +1,6 @@
+<h2>Book a seat</h2>
+
+<p>You have booked {{ seatsBooked() }} of {{ capacity }} seats.</p>
+
+<button (click)="book()" [disabled]="seatsBooked() === capacity">Book a seat</button>
+<button (click)="cancel()" [disabled]="seatsBooked() === 0">Cancel a seat</button>

@@ -1,0 +1,13 @@
+<h2>Spring 2026</h2>
+
+@for (course of courses; track course.id) {
+  <article>
+    <h3>{{ course.title }}</h3>
+    <p>Taught by {{ course.instructor }}</p>
+    <p>Starts {{ course.startDate | date: 'mediumDate' }}</p>
+    <p>Tuition: {{ course.tuition | currency }}</p>
+    <p>{{ course.seatsLeft }} seats left</p>
+  </article>
+} @empty {
+  <p>No courses are listed for this term.</p>
+}

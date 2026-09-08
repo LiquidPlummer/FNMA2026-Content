@@ -1,0 +1,15 @@
+<h1>Riverbend Course Catalog</h1>
+
+<nav>
+  <a routerLink="/">Home</a>
+  <a routerLink="/courses">Catalog</a>
+  <a routerLink="/nowhere">Broken link</a>
+</nav>
+
+@if (session.isLoggedIn()) {
+  <p>Signed in. <button (click)="session.signOut()">Sign out</button></p>
+} @else {
+  <p>Signed out. <button (click)="session.signIn()">Sign in</button></p>
+}
+
+<router-outlet />

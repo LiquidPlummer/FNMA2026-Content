@@ -1,0 +1,9 @@
+<h3>{{ member.name }}</h3>
+<p>{{ member.email }}</p>
+<p>Role: {{ member.role }}</p>
+
+<label>
+  New role:
+  <input type="text" [(ngModel)]="draftRole" name="draftRole" />
+</label>
+<button [disabled]="draftRole.length === 0" (click)="applyRole()">Apply</button>
