@@ -91,7 +91,7 @@ export class RouteLockService {
 This is the route guard function used for route #3. Logically it just checks if locks.lockThree
 is true or false. Note that this variable is of type CanActivateFn.
 */
-export const canOpenRoute: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot,) => {
+export const canOpenRoute: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   console.log("canActivate funciton for route 3");
   return inject(RouteLockService).locks.lockThree;
 }

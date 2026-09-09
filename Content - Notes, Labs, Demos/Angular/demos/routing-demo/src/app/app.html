@@ -1,0 +1,15 @@
+<nav>
+  <a routerLink="/">Home</a> |
+  <a routerLink="/about">About</a> |
+  <a [routerLink]="[{ outlets: { secretOutlet: ['secret'] } }]">Secret</a> |
+  <button routerLink="/parent/one"> parent/child components </button> |
+</nav>
+<hr>
+
+
+
+<router-outlet />
+<hr>
+<router-outlet name="secretOutlet"></router-outlet>
+
+
