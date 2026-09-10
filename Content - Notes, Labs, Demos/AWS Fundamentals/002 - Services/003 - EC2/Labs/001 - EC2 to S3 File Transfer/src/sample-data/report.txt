@@ -1,7 +1,0 @@
-Quarterly Report (Lab Placeholder)
-===================================
-
-This file starts out sitting in S3. The goal of the download half of this
-lab is to end up with an identical copy of it sitting on the EC2 instance,
-pulled down using the instance's attached IAM role rather than any
-hardcoded credentials.

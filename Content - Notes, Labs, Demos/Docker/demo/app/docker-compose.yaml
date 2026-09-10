@@ -1,0 +1,25 @@
+# Reference copy. Do NOT put this in the project before the demo --
+# topic 007 writes it on screen, translating the run flags key by key.
+# Save to: docker-demo/compose.yaml
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    environment:
+      GREETING: "Hello from Compose"
+      DB_HOST: db          # the service name, not localhost
+      DB_PASSWORD: secret
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

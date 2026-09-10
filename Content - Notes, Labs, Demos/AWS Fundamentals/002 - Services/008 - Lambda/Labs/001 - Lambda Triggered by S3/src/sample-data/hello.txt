@@ -1,4 +1,0 @@
-Hello from the Lambda lab.
-This little file exists purely to be uploaded, so the trigger has
-something real to fire on and summarize.
-It has exactly four lines, this one included.
