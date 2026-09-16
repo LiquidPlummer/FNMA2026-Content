@@ -1,0 +1,11 @@
+# week of 2026-03-09
+Ada Lovelace    , mon , 7.5
+Grace Hopper    , mon , 8
+Ada Lovelace    , tue , 6
+
+Linus Torvalds  , tue , 9.25
+Grace Hopper    , wed , 7.75
+# Linus was out Wednesday
+Ada Lovelace    , wed , 8
+Linus Torvalds  , thu , 4.5
+Grace Hopper    , fri , 8

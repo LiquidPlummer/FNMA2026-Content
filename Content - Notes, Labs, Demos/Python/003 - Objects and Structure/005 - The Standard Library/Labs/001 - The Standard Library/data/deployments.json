@@ -1,0 +1,18 @@
+{
+  "team": "platform",
+  "exported": "2026-03-16 08:00",
+  "deployments": [
+    {"service": "billing", "author": "ada", "started": "2026-03-09 09:15", "seconds": 312, "status": "success", "ticket": "OPS-101", "rollback": false},
+    {"service": "search", "author": "grace", "started": "2026-03-09 14:40", "seconds": 505, "status": "success", "ticket": null, "rollback": false},
+    {"service": "billing", "author": "linus", "started": "2026-03-10 10:05", "seconds": 290, "status": "failed", "ticket": "OPS-104", "rollback": true},
+    {"service": "billing", "author": "ada", "started": "2026-03-10 11:30", "seconds": 301, "status": "success", "ticket": "OPS-104", "rollback": false},
+    {"service": "auth", "author": "grace", "started": "2026-03-11 09:00", "seconds": 188, "status": "success", "ticket": null, "rollback": false},
+    {"service": "auth", "author": "ada", "started": "2026-03-12 08:45", "seconds": 201, "status": "success", "ticket": "OPS-112", "rollback": false},
+    {"service": "search", "author": "grace", "started": "2026-03-12 13:10", "seconds": 498, "status": "failed", "ticket": null, "rollback": true},
+    {"service": "search", "author": "margaret", "started": "2026-03-12 15:55", "seconds": 512, "status": "success", "ticket": null, "rollback": false},
+    {"service": "search", "author": "margaret", "started": "2026-03-12 16:20", "seconds": 640, "status": "cancelled", "ticket": "OPS-110", "rollback": false},
+    {"service": "billing", "author": "linus", "started": "2026-03-13 10:25", "seconds": 330, "status": "success", "ticket": "OPS-118", "rollback": false},
+    {"service": "auth", "author": "margaret", "started": "2026-03-13 17:05", "seconds": 176, "status": "success", "ticket": "OPS-120", "rollback": false},
+    {"service": "billing", "author": "ada", "started": "2026-03-13 17:40", "seconds": 305, "status": "success", "ticket": null, "rollback": false}
+  ]
+}
